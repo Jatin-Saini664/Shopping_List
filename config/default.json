@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://jatin:jatin123@mern-stack-adk5z.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "sl_myJwtsecret"
+}

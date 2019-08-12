@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
 
 // Item Models
 const Item = require('../../models/Item'); // capital i because it is a modal
@@ -15,8 +16,8 @@ router.get('/', (req, res) => {
 
 // @route POST api/items.   // ge item from api/items
 // @desc create an Item.  // desc is description
-// @access Public
-router.post('/', (req, res) => {
+// @access Private
+router.post('/', auth, (req, res) => {
   const newItem = new Item({
     // we want to contruct a new object to insert into the database
     name: req.body.name
@@ -27,8 +28,8 @@ router.post('/', (req, res) => {
 
 // @route DELETE api/items/:id.
 // @desc delete a Item.
-// @access Public
-router.delete('/:id', (req, res) => {
+// @access Private
+router.delete('/:id', auth, (req, res) => {
   Item.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
