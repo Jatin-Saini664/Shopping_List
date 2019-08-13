@@ -67,7 +67,6 @@ export const register = ({ name, email, password }) => dispatch => {
 
 // login user
 export const login = ({ email, password }) => dispatch => {
-  // using destructuring
   // Headers
   const config = {
     headers: {
